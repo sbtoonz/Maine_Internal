@@ -6,7 +6,8 @@
 
 #ifndef PCH_H
 #define PCH_H
-
+#define __FILENAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
+#define LOG(format, ...) std::printf("[%s:%s:%i]" format "\n", __FILENAME__, __FUNCTION__, __LINE__, __VA_ARGS__)
 // add headers that you want to pre-compile here
 #include "framework.h"
 #include <SDK.h>
