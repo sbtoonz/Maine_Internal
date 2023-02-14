@@ -14,6 +14,8 @@
 #include <detver.h>
 #include <syelog.h>
 #include <SDK.h>
+using namespace CG;
 #include "../imgui/imgui.h"
 #include "Utils/json.hpp"
+#include "Utils/HookManager.h"
 #endif //PCH_H

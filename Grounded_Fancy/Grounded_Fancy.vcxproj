@@ -153,6 +153,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="UIX\GUI.h" />
     <ClInclude Include="Utils\Configuration.h" />
+    <ClInclude Include="Utils\HookManager.h" />
     <ClInclude Include="Utils\json.hpp" />
   </ItemGroup>
   <ItemGroup>
