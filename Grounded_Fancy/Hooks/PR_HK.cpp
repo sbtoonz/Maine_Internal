@@ -1,8 +1,10 @@
 ﻿#include "pch.h"
 #include "PR_HK.h"
 
+#include "../Features/FeatureCore.h"
 
-void PR_HK::h_post_render(CG::UGameViewportClient* viewport_client, CG::UCanvas* canvas)
+
+void PR_HK::h_post_render(UGameViewportClient* viewport_client, UCanvas* canvas)
 {
     if (canvas)
     {
@@ -15,6 +17,8 @@ void PR_HK::h_post_render(CG::UGameViewportClient* viewport_client, CG::UCanvas*
                SetHook = true;
            }
        }
+        Globals::GetGlobals()->Tick(canvas);
+        FeatureCore::GetFeatureCore()->Tick();
     }
     oPostRender(viewport_client, canvas);
 }

@@ -18,4 +18,5 @@ using namespace CG;
 #include "../imgui/imgui.h"
 #include "Utils/json.hpp"
 #include "Utils/HookManager.h"
+#include "Utils/Globals.h"
 #endif //PCH_H

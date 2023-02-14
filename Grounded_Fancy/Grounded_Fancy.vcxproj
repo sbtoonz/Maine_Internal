@@ -148,6 +148,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Features\FeatureCore.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Hooks\PE_HK.h" />
     <ClInclude Include="Hooks\PR_HK.h" />
@@ -161,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Features\FeatureCore.cpp" />
     <ClCompile Include="Hooks\PE_HK.cpp" />
     <ClCompile Include="Hooks\PR_HK.cpp" />
     <ClCompile Include="pch.cpp">
@@ -194,9 +196,6 @@
     <ClCompile Include="..\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="..\ImGui\backends\imgui_impl_dx12.cpp" />
     <ClCompile Include="..\ImGui\backends\imgui_impl_win32.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
