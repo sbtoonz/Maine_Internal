@@ -10,5 +10,8 @@
 #define LOG(format, ...) std::printf("[%s:%s:%i]" format "\n", __FILENAME__, __FUNCTION__, __LINE__, __VA_ARGS__)
 // add headers that you want to pre-compile here
 #include "framework.h"
+#include <detours.h>
+#include <detver.h>
+#include <syelog.h>
 #include <SDK.h>
 #endif //PCH_H
