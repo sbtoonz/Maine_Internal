@@ -152,6 +152,8 @@
     <ClInclude Include="Hooks\PR_HK.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="UIX\GUI.h" />
+    <ClInclude Include="Utils\Configuration.h" />
+    <ClInclude Include="Utils\json.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -164,6 +166,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="UIX\GUI.cpp" />
+    <ClCompile Include="Utils\Configuration.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maine\Maine.vcxproj">

@@ -14,4 +14,6 @@
 #include <detver.h>
 #include <syelog.h>
 #include <SDK.h>
+#include "../imgui/imgui.h"
+#include "Utils/json.hpp"
 #endif //PCH_H
