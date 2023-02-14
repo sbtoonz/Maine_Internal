@@ -19,10 +19,12 @@ DWORD WINAPI startup_thread(LPVOID lpvoid, HMODULE hmodule)
                 LOG("World identified %p", world);
                 auto ObjPESig = reinterpret_cast<DWORD64>(FindPattern(
                     "40 55 56 57 41 54 41 55 41 56 41 57 48 81 EC ? ? ? ? 48 8D 6C 24 ? 48 89 9D ? ? ? ? 48 8B 05 ? ? ? ? 48 33 C5 48 89 85 ? ? ? ? 8B 41 0C 45 33 F6 3B 05 ? ? ? ?"));
+                auto PRSig = reinterpret_cast<DWORD64>(FindPattern(
+                    "48 8B 01 48 FF A0 ? ? 00 00 CC CC CC CC CC CC 41 56 48 83 EC 50 ? ?"));
                 auto* viewport = world->OwningGameInstance->LocalPlayers[0]->ViewportClient;
                 if (viewport)
                 {
-                    auto* vftable = *reinterpret_cast<void***>(viewport);
+                    const auto* vftable = *reinterpret_cast<void***>(viewport);
                     for (int i = 0; i < 150; ++i)
                     {
                         if (vftable[i] == reinterpret_cast<void*>(ObjPESig))
@@ -30,12 +32,16 @@ DWORD WINAPI startup_thread(LPVOID lpvoid, HMODULE hmodule)
                             LOG("Found PE %p %i", vftable[i], i);
                             PE_HK::o_process_event = reinterpret_cast<PE_HK::tProcessEvent>(vftable[i]);
                         }
+                        if(vftable[i] == reinterpret_cast<void*>(PRSig))
+                        {
+                            LOG("Found PR %p %i", vftable[i], i);
+                            HookManager::SwapVmt(viewport,
+                                                 POST_RENDER_INDEX,
+                                                 reinterpret_cast<void*>(&PR_HK::h_post_render),
+                                                 reinterpret_cast<void**>(&PR_HK::oPostRender));
+                        }
                     }
-
-                    HookManager::SwapVmt(viewport,
-                                         POST_RENDER_INDEX,
-                                         reinterpret_cast<void*>(&PR_HK::h_post_render),
-                                         reinterpret_cast<void**>(&PR_HK::oPostRender));
+                   
                 }
             }
         }
