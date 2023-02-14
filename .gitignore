@@ -1,1 +1,7 @@
 ﻿/x64/Release/
+*.tlog
+*.lastbuildstate
+*.filters
+*.pdb
+*.txt
+*.log
